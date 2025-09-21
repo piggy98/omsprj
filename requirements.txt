@@ -1,0 +1,5 @@
+Flask
+apscheduler
+requests
+bs4
+mysql-connector-python

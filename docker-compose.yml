@@ -1,0 +1,72 @@
+version: "3.9"
+
+services:
+  mariadb:
+    image: mariadb:12.0
+    container_name: mariadb
+    restart: always
+    environment:
+      - FLASK_ENV=production
+      - DB_HOST=mariadb
+      - DB_USER=omsuser
+      - DB_PASSWORD=omspass
+      - DB_NAME=oms
+      - CRAWL_INTERVAL_MINUTES=120   # 주기 (원하면 변경 가능)
+    ports:
+      - "3307:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "maria-admin", "ping", "-h", "localhost", "-uroot", "-prootpass"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  flaskapp:
+    build: .
+    container_name: flaskapp
+    restart: always
+    # depends_on:
+    # - mariadb  
+      # condition: service_healthy
+    environment:
+      - FLASK_ENV=production
+      - DB_HOST=mariadb
+      - DB_USER=omsuser
+      - DB_PASSWORD=omspass
+      - DB_NAME=oms
+      - CRAWL_INTERVAL_MINUTES=120
+    ports:
+      - "8280:5002"
+    # volumes:
+    #     - ./logs:/app/logs
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
+    restart: always
+    # depends_on:
+    #   mariadb:
+    #     condition: service_healthy
+    environment:
+      PMA_HOST: mariadb
+      PMA_USER: root
+      PMA_PASSWORD: rootpass                # ✅ phpMyAdmin root 로그인 가능
+    ports:
+      - "8081:80"
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    restart: always
+    depends_on:
+      - flaskapp
+    ports:
+      - "8888:80"
+    volumes:
+      # - ./default.conf:/etc/nginx/default.conf:ro
+      - ./default.conf:/etc/nginx/conf.d/default.conf:ro
+
+
+volumes:
+  mariadb_data:

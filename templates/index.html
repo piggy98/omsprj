@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DB Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        input[type="text"] {
+            padding: 8px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 8px 12px;
+        }
+        ul {
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+<h1>User List</h1>
+<form method="POST">
+    <input type="text" name="name" placeholder="Enter name" required>
+    <button type="submit">Add</button>
+</form>
+<ul>
+    {% for row in rows %}
+    <li>{{ row['name'] }}</li>
+    {% endfor %}
+</ul>
+</body>
+</html>

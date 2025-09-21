@@ -1,0 +1,52 @@
+version: "3.9"
+
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: rootpass
+      MARIADB_DATABASE: testdb
+      MARIADB_USER: testuser
+      MARIADB_PASSWORD: '1234'
+    volumes:
+      - ./mariadb_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    ports:
+      - "3307:3306"
+
+  flaskapp:
+    build: .
+    container_name: flask-db-app
+    restart: always
+    depends_on:
+      - mariadb
+    expose: 
+      - "5002"  # 내부 네트워크에서만 노출
+	volumes:
+	  - ./crawled_data:/app/crawled_data  # 이 부분 추가됨 2025/9/9		
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    restart: always
+    ports:
+      - "8888:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - flaskapp
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: mariadb
+      PMA_PORT: 3306
+      PMA_USER: testuser        # 선택 사항 (DB 접속용 계정)
+      PMA_PASSWORD: '1234'      # 선택 사항
+    ports:
+      - "8081:80"  # 브라우저에서 http://localhost:8081 접속
+    depends_on:
+      - mariadb

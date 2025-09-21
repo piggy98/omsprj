@@ -1,0 +1,166 @@
+{
+   "CapAdd" : null,
+   "CapDrop" : null,
+   "cmd" : "apache2-foreground",
+   "cmd_v2" : "apache2-foreground",
+   "cpu_priority" : 0,
+   "enable_publish_all_ports" : false,
+   "enable_restart_policy" : true,
+   "enabled" : false,
+   "env_variables" : [
+      {
+         "key" : "PMA_HOST",
+         "value" : "mariadb"
+      },
+      {
+         "key" : "PMA_PORT",
+         "value" : "3306"
+      },
+      {
+         "key" : "MYSQL_ROOT_PASSWORD",
+         "value" : "rootpass"
+      },
+      {
+         "key" : "PATH",
+         "value" : "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+      },
+      {
+         "key" : "PHPIZE_DEPS",
+         "value" : "autoconf \t\tdpkg-dev \t\tfile \t\tg++ \t\tgcc \t\tlibc-dev \t\tmake \t\tpkg-config \t\tre2c"
+      },
+      {
+         "key" : "PHP_INI_DIR",
+         "value" : "/usr/local/etc/php"
+      },
+      {
+         "key" : "APACHE_CONFDIR",
+         "value" : "/etc/apache2"
+      },
+      {
+         "key" : "APACHE_ENVVARS",
+         "value" : "/etc/apache2/envvars"
+      },
+      {
+         "key" : "PHP_CFLAGS",
+         "value" : "-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
+      },
+      {
+         "key" : "PHP_CPPFLAGS",
+         "value" : "-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
+      },
+      {
+         "key" : "PHP_LDFLAGS",
+         "value" : "-Wl,-O1 -pie"
+      },
+      {
+         "key" : "GPG_KEYS",
+         "value" : "39B641343D8C104B2B146DC3F9C39DC0B9698544 E60913E4DF209907D8E30D96659A97C9CF2A795A 1198C0117593497A5EC5C199286AF1F9897469DC"
+      },
+      {
+         "key" : "PHP_VERSION",
+         "value" : "8.2.27"
+      },
+      {
+         "key" : "PHP_URL",
+         "value" : "https://www.php.net/distributions/php-8.2.27.tar.xz"
+      },
+      {
+         "key" : "PHP_ASC_URL",
+         "value" : "https://www.php.net/distributions/php-8.2.27.tar.xz.asc"
+      },
+      {
+         "key" : "PHP_SHA256",
+         "value" : "3eec91294d8c09b3df80b39ec36d574ed9b05de4c8afcb25fa215d48f9ecbc6b"
+      },
+      {
+         "key" : "PMA_SSL_DIR",
+         "value" : "/etc/phpmyadmin/ssl"
+      },
+      {
+         "key" : "MAX_EXECUTION_TIME",
+         "value" : "600"
+      },
+      {
+         "key" : "MEMORY_LIMIT",
+         "value" : "512M"
+      },
+      {
+         "key" : "UPLOAD_LIMIT",
+         "value" : "2048K"
+      },
+      {
+         "key" : "TZ",
+         "value" : "UTC"
+      },
+      {
+         "key" : "SESSION_SAVE_PATH",
+         "value" : "/sessions"
+      },
+      {
+         "key" : "VERSION",
+         "value" : "5.2.2"
+      },
+      {
+         "key" : "SHA256",
+         "value" : "f881819a3b11e653b0212afaf0cc105db85c767715cb3f5852670f7fc36c9669"
+      },
+      {
+         "key" : "URL",
+         "value" : "https://files.phpmyadmin.net/phpMyAdmin/5.2.2/phpMyAdmin-5.2.2-all-languages.tar.xz"
+      }
+   ],
+   "exporting" : false,
+   "id" : "b979e13f539019b542d9129c21f5cfcf2b63d8b0ca1982debfb4150883c8655b",
+   "image" : "phpmyadmin/phpmyadmin:latest",
+   "is_ddsm" : false,
+   "is_package" : false,
+   "labels" : {
+      "com.docker.compose.config-hash" : "733c14c8603bb411798c4a42207259a6b63c3d4146b5fc5e481eb14a11b5f93c",
+      "com.docker.compose.container-number" : "1",
+      "com.docker.compose.depends_on" : "mariadb:service_healthy:false",
+      "com.docker.compose.image" : "sha256:0276a66ce3224417caa58f620278c4662a891c953b51dc604829e2cc286f531b",
+      "com.docker.compose.oneoff" : "False",
+      "com.docker.compose.project" : "omsprj",
+      "com.docker.compose.project.config_files" : "/volume1/omsprj/docker-compose.yml",
+      "com.docker.compose.project.working_dir" : "/volume1/omsprj",
+      "com.docker.compose.replace" : "5f391e88ebcbe101766c6a048344ff81455db93d6a7ab6464ff7316bee6ca9cd",
+      "com.docker.compose.service" : "phpmyadmin",
+      "com.docker.compose.version" : "2.20.1",
+      "org.opencontainers.image.authors" : "The phpMyAdmin Team <developers@phpmyadmin.net>",
+      "org.opencontainers.image.description" : "Run phpMyAdmin with Alpine, Apache and PHP FPM.",
+      "org.opencontainers.image.documentation" : "https://github.com/phpmyadmin/docker#readme",
+      "org.opencontainers.image.licenses" : "GPL-2.0-only",
+      "org.opencontainers.image.source" : "https://github.com/phpmyadmin/docker.git",
+      "org.opencontainers.image.title" : "Official phpMyAdmin Docker image",
+      "org.opencontainers.image.url" : "https://github.com/phpmyadmin/docker#readme",
+      "org.opencontainers.image.vendor" : "phpMyAdmin",
+      "org.opencontainers.image.version" : "5.2.2"
+   },
+   "links" : [],
+   "memory_limit" : 0,
+   "name" : "phpmyadmin",
+   "network" : [
+      {
+         "driver" : "bridge",
+         "name" : "omsprj_default"
+      }
+   ],
+   "network_mode" : "omsprj_default",
+   "port_bindings" : [
+      {
+         "container_port" : 80,
+         "host_port" : 8081,
+         "type" : "tcp"
+      }
+   ],
+   "privileged" : false,
+   "shortcut" : {
+      "enable_shortcut" : false,
+      "enable_status_page" : false,
+      "enable_web_page" : false,
+      "web_page_url" : ""
+   },
+   "use_host_network" : false,
+   "version" : 2,
+   "volume_bindings" : []
+}

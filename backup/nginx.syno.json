@@ -1,0 +1,94 @@
+{
+   "CapAdd" : null,
+   "CapDrop" : null,
+   "cmd" : "nginx -g 'daemon off;'",
+   "cmd_v2" : "nginx -g 'daemon off;'",
+   "cpu_priority" : 0,
+   "enable_publish_all_ports" : false,
+   "enable_restart_policy" : true,
+   "enabled" : false,
+   "env_variables" : [
+      {
+         "key" : "PATH",
+         "value" : "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+      },
+      {
+         "key" : "NGINX_VERSION",
+         "value" : "1.29.1"
+      },
+      {
+         "key" : "NJS_VERSION",
+         "value" : "0.9.1"
+      },
+      {
+         "key" : "NJS_RELEASE",
+         "value" : "1~bookworm"
+      },
+      {
+         "key" : "PKG_RELEASE",
+         "value" : "1~bookworm"
+      },
+      {
+         "key" : "DYNPKG_RELEASE",
+         "value" : "1~bookworm"
+      }
+   ],
+   "exporting" : false,
+   "id" : "a18aded17f4f2407cc9bcbce80b409865e4fd3099020dc06ecabe648473b8727",
+   "image" : "nginx:latest",
+   "is_ddsm" : false,
+   "is_package" : false,
+   "labels" : {
+      "com.docker.compose.config-hash" : "376c448a496efb11f244c9a4dee0046573f233f41d07e77b88de7a5925446c57",
+      "com.docker.compose.container-number" : "1",
+      "com.docker.compose.depends_on" : "flaskapp:service_started:false",
+      "com.docker.compose.image" : "sha256:41f689c209100e6cadf3ce7fdd02035e90dbd1d586716bf8fc6ea55c365b2d81",
+      "com.docker.compose.oneoff" : "False",
+      "com.docker.compose.project" : "omsprj",
+      "com.docker.compose.project.config_files" : "/volume1/omsprj/docker-compose.yml",
+      "com.docker.compose.project.working_dir" : "/volume1/omsprj",
+      "com.docker.compose.replace" : "629ea75221d0c497037f7e9cc41f38feebc1088cb16401b2ed8b8e6de78658be",
+      "com.docker.compose.service" : "nginx",
+      "com.docker.compose.version" : "2.20.1",
+      "maintainer" : "NGINX Docker Maintainers <docker-maint@nginx.com>"
+   },
+   "links" : [],
+   "memory_limit" : 0,
+   "name" : "nginx",
+   "network" : [
+      {
+         "driver" : "bridge",
+         "name" : "omsprj_default"
+      }
+   ],
+   "network_mode" : "omsprj_default",
+   "port_bindings" : [
+      {
+         "container_port" : 443,
+         "host_port" : 443,
+         "type" : "tcp"
+      },
+      {
+         "container_port" : 80,
+         "host_port" : 80,
+         "type" : "tcp"
+      }
+   ],
+   "privileged" : false,
+   "shortcut" : {
+      "enable_shortcut" : false,
+      "enable_status_page" : false,
+      "enable_web_page" : false,
+      "web_page_url" : ""
+   },
+   "use_host_network" : false,
+   "version" : 2,
+   "volume_bindings" : [
+      {
+         "host_volume_file" : "/omsprj/nginx/default.conf",
+         "is_directory" : false,
+         "mount_point" : "/etc/nginx/conf.d/default.conf",
+         "type" : "ro"
+      }
+   ]
+}

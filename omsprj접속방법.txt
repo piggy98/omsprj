@@ -1,0 +1,17 @@
+docker-compose up -d 후
+
+http://<NAS-IP>:8080/ → Flask 앱
+
+http://<NAS-IP>:8088/ → phpMyAdmin
+
+MariaDB: 호스트 3307 → 컨테이너 3306
+
+Flask 앱: 호스트 8280→ 컨테이너 5002
+
+Nginx: 호스트 8080 → 컨테이너 80
+
+phpMyAdmin: 호스트 8088 → 컨테이너 80
+
+Nginx와 phpMyAdmin 포트 충돌 없음
+
+MariaDB healthcheck 명령 mariadb-admin -uroot -pROOT_PASSWORD ping으로 수정
