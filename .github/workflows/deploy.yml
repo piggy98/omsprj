@@ -26,11 +26,15 @@ jobs:
           key: ${{ secrets.NAS_SSH_KEY }}
           script: |
             cd /volume1/git_storage/omsprj
-            git pull
+              git pull
 
-            # 파일별 조건 분기
-            if git diff --name-only HEAD~1 HEAD | grep -q "docker-compose.yml"; then
-              echo "docker-compose.yml 변경 감지 → 전체 빌드"
-              /usr/local/bin/docker-compose up -d --build
-            elif git diff --name-only HEAD~1 HEAD | grep -E "app.py|updream_crawler.py" >/dev/null; then
-              echo "app.py 또는 updream_crawler.py 변경_
+              # 파일별 조건 분기
+              if git diff --name-only HEAD~1 HEAD | grep -q "docker-compose.yml"; then
+                echo "docker-compose.yml 변경 감지 → 전체 빌드"
+                /usr/local/bin/docker-compose up -d --build
+              elif git diff --name-only HEAD~1 HEAD | grep -E "app.py|updream_crawler.py" >/dev/null; then
+                echo "app.py 또는 updream_crawler.py 변경 감지 → flaskapp만 빌드"
+                /usr/local/bin/docker-compose up -d --build flaskapp
+              else
+                echo "변경된 파일이 배포 대상 아님 → 작업 없음"
+              fi
